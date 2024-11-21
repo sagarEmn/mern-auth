@@ -13,7 +13,7 @@ app.get("/", (req, res) => {
     res.send("Whatever World");
 });
 
-app.unsubscribe("/api/auth", authRoutes);
+app.use("/api/auth", authRoutes);
 
 app.listen(3000, () => {
     connectDB();
