@@ -3,6 +3,8 @@ import dotenv from "dotenv";
 
 import { connectDB } from "./db/connectDB.js";
 
+import authRoutes from "./routes/auth.route.js";
+
 dotenv.config();
 
 const app = express();
@@ -14,6 +16,8 @@ app.get("/", (req, res) => {
 app.get("/home", (req, res) => {
     res.send("This is home");
 })
+
+app.use("/api/auth", authRoutes);
 
 app.listen(3000, () => {
     connectDB();
