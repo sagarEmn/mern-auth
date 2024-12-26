@@ -9,7 +9,8 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-// comment to able to commit to mark part 2 completion
+
+app.use(express.json()); 
 
 app.use("/api/auth", authRoutes);
 
