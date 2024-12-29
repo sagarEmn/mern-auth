@@ -5,10 +5,8 @@ dotenv.config();
 
 console.log("MAILTRAP_TOKEN:", process.env.MAILTRAP_TOKEN);
 
-const TOKEN = process.env.MAILTRAP_TOKEN;
-
 const client = new MailtrapClient({
-  token: TOKEN,
+  token: process.env.MAILTRAP_TOKEN,
 });
 
 const sender = {
