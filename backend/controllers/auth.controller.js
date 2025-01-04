@@ -58,7 +58,10 @@ export const verifyEmail = async (req, res) => {
     });
 
     if (!user) {
-      return res.status(400).json({ success: false, message: "Invalid or expired verification code"});
+      return res.status(400).json({
+        success: false,
+        message: "Invalid or expired verification code",
+      });
     }
 
     user.isVerified = true;
@@ -80,10 +83,6 @@ export const verifyEmail = async (req, res) => {
     console.log("error in verifyEmail", error);
     res.status(500).json({ success: false, message: "Server error" });
   }
-};
-
-export const login = async (req, res) => {
-  res.send("login route");
 };
 
 export const logout = async (req, res) => {

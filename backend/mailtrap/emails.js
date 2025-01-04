@@ -1,4 +1,3 @@
-import { MailtrapClient } from "mailtrap";
 import { mailtrapClient, sender } from "./mailtrap.config.js";
 import { VERIFICATION_EMAIL_TEMPLATE } from "./emailTemplate.js";
 
@@ -26,13 +25,13 @@ export const sendWelcomeEmail = async (email, name) => {
     const recipient = [{ email }];
 
     try {
-        const response = await MailtrapClient.send({
-            from: sendVerificationEmail,
+        const response = await mailtrapClient.send({
+            from: sender,
             to: recipient,
-            template_uuid: "...",
+            template_uuid: "90a09282-a848-4508-ae6b-c7e2d5919cd0",
             template_variables: {
                 company_info_name: "Auth Company",
-                name: name,
+                first_name: name,
             },
         });
 
