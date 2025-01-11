@@ -2,6 +2,8 @@ import { Route, Routes } from "react-router-dom";
 
 import "./App.css";
 import FloatingShape from "./components/FloatingShape";
+import SignUpPage from "./pages/SignUpPage";
+import LoginPage from "./pages/LoginPage";
 
 function App() {
   return (
