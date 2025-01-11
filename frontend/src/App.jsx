@@ -1,4 +1,5 @@
 import "./App.css";
+import FloatingShape from "./components/FloatingShape";
 
 function App() {
   return (
