@@ -26,7 +26,6 @@ function App() {
           left="-10"
           delay={2}
         />
-        
       </div>
     </>
   );
