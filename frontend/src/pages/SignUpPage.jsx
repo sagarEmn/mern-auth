@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 
 const SignUpPage = () => {
+  const [name, setName] = useState('');
+
   const handleSignUp = (e) => {
     e.preventDefault();
   };
@@ -17,7 +19,15 @@ const SignUpPage = () => {
           Create your account
         </h2>
 
-        <form onSubmit={handleSignUp}></form>
+        <form onSubmit={handleSignUp}>
+          <Input 
+            icon={User}
+            type='text'
+            placeholder='Full Name'
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+        </form>
       </div>
     </motion.div>
   );
