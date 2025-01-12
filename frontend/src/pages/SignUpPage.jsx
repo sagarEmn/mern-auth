@@ -1,4 +1,9 @@
+import { useState } from "react";
+
+import { User } from "lucide-react";
+
 import { motion } from "framer-motion";
+import Input from "../components/Input";
 
 const SignUpPage = () => {
   const [name, setName] = useState('');
@@ -20,7 +25,7 @@ const SignUpPage = () => {
         </h2>
 
         <form onSubmit={handleSignUp}>
-          <Input 
+          <Input
             icon={User}
             type='text'
             placeholder='Full Name'
