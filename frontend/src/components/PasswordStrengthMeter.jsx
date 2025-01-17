@@ -28,13 +28,32 @@ const PasswordCriteria = ({ password }) => {
           <span className={item.met ? "text-green-500" : "text-gray-400"}>
             {item.label}
           </span>
-        </div>
+        </div>;
       })}
     </div>
   );
 };
 
-const PasswordStrengthMeter = ({password}) => {
+const PasswordStrengthMeter = ({ password }) => {
+  const getStrength = (pass) => {
+    let strength = 0;
+    if (pass.length >= 6) strength++;
+    if (pass.match(/[a-z]/) && pass.match(/[A-Z]/)) strength++;
+    if (pass.match(/\d/)) strength++;
+    if (pass.match(/[^a-zA-Z\d]/)) strength++;
+    return strength;
+  };
+
+  const strength = getStrength(password);
+
+  const getStrengthText = (strength) => {
+    if (strength === 0) return "Very Weak";
+    if (strength === 1) return "Weak";
+    if (strength === 2) return "Fair";
+    if (strength === 3) return "Good";
+    return "Strong";
+  };
+
   return <>PasswordStrengthMeter</>;
 };
 
