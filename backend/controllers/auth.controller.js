@@ -1,5 +1,6 @@
 import { User } from "../models/user.model";
 import bcryptjs from "bcryptjs";
+import { generateVerificationCode } from "../utils/generateVerificationCode";
 
 export const signup = async (req, res) => {
   const { email, password, name } = req.body;
@@ -13,14 +14,16 @@ export const signup = async (req, res) => {
     console.log("userAlreadyExists", userAlreadyExists);
 
     if (userAlreadyExists) {
-        return res.status(400).json({success: false, message: "User already exists"});
+      return res
+        .status(400)
+        .json({ success: false, message: "User already exists" });
     }
 
     const hashedPassword = await bcryptjs.hash(password, 10);
-    const verificationToken = Math.floor(100000 + Math.random() * 900000).toString();
+    const verificationToken = generateVerificationCode();
 
     const user = new User({
-      email, 
+      email,
       password: hashedPassword,
       name,
       verificationToken,
@@ -28,10 +31,7 @@ export const signup = async (req, res) => {
     });
 
     await user.save();
-    
-  } catch (error) {
-
-  }
+  } catch (error) {}
 };
 
 export const login = async (req, res) => {
