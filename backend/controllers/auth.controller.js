@@ -1,6 +1,7 @@
 import { User } from "../models/user.model";
 import bcryptjs from "bcryptjs";
 import { generateVerificationCode } from "../utils/generateVerificationCode";
+import { generateTokenAndSetCookie } from "../utils/generateTokenAndSetCookie";
 
 export const signup = async (req, res) => {
   const { email, password, name } = req.body;
@@ -31,7 +32,20 @@ export const signup = async (req, res) => {
     });
 
     await user.save();
-  } catch (error) {}
+
+    generateTokenAndSetCookie(res, user._id);
+
+    res.status(201).json({
+      success: true,
+      message: "User created successfully",
+      user: {
+        ...user._doc,
+        password: undefined,
+      }
+    })
+  } catch (error) {
+    res.status(400).json({ success: false, message: error.message });
+  }
 };
 
 export const login = async (req, res) => {
