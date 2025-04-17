@@ -1,7 +1,7 @@
-import { User } from "../models/user.model";
+import { User } from "../models/user.model.js";
 import bcryptjs from "bcryptjs";
-import { generateVerificationCode } from "../utils/generateVerificationCode";
-import { generateTokenAndSetCookie } from "../utils/generateTokenAndSetCookie";
+import { generateVerificationCode } from "../utils/generateVerificationCode.js";
+import { generateTokenAndSetCookie } from "../utils/generateTokenAndSetCookie.js";
 
 export const signup = async (req, res) => {
   const { email, password, name } = req.body;
@@ -54,5 +54,5 @@ export const login = async (req, res) => {
 };
 
 export const logout = async (req, res) => {
-  res.sesnd("logout page");
+  res.send("logout page");
 };

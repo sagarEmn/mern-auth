@@ -47,4 +47,4 @@ export const User = mongoose.model("User", userSchema);
 
 // "User" provides the interface(a set of methods) to interact with the MongoDB database. 
 
-// When "User" is called with the keyword "new", it models a document using the userSchema object and stores it in the collection in MongoDB called "users"
+// When "User" is called with the keyword "new", it models a document using the userSchema object and stores it in the collection in MongoDB called "users" 
