@@ -23,6 +23,7 @@ export const signup = async (req, res) => {
     const hashedPassword = await bcryptjs.hash(password, 10);
     const verificationToken = generateVerificationCode();
 
+    // const user holds a document instance created from the constructor User
     const user = new User({
       email,
       password: hashedPassword,
