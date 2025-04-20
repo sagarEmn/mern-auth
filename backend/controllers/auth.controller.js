@@ -89,7 +89,11 @@ export const verifyEmail = async (req, res) => {
       }
     })
   } catch (error) {
-    console.log("Error", error.message);
+    console.log("Error in verifyEmail: ", error.message);
+    res.status(500).json({
+      success: false, 
+      message: "Error in verifyEmail: Server error"
+    })
   }
 };
 
