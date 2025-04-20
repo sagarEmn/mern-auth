@@ -39,6 +39,7 @@ export const sendWelcomeEmail = async (email, name) => {
         company_info_name: "Auth Company",
         name: name,
       },
+      category: "Welcome Email"
     });
 
     console.log("Welcome email sent successfully: ", response);
