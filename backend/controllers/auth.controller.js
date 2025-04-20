@@ -158,7 +158,7 @@ export const forgotPassword = async (req, res) => {
   try {
     const user = await User.findOne({ email });
 
-    if (!email) {
+    if (!user) {
       res.status(400).json({
         success: false,
         message: "User doesn't exist",
@@ -183,6 +183,6 @@ export const forgotPassword = async (req, res) => {
     });
   } catch (error) {
     console.log("Error in forgotPassword: ", error);
-    throw new Error("Error in forgotPassword: ", error);
+    throw Error("Error in forgotPassword: ", error);
   }
 };
