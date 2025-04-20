@@ -45,6 +45,8 @@ export const signup = async (req, res) => {
 
     generateTokenAndSetCookie(res, user._id);
 
+    await sendVerificationEmail(user.email, verificationToken);
+
     res.status(201).json({
       success: true,
       message: "User created successfully",
@@ -53,8 +55,6 @@ export const signup = async (req, res) => {
         password: undefined,
       },
     });
-
-    await sendVerificationEmail(user.email, verificationToken);
   } catch (error) {
     res.status(400).json({ success: false, message: error.message });
   }
@@ -175,7 +175,7 @@ export const forgotPassword = async (req, res) => {
     await user.save();
 
     // send email
-    sendPasswordResetEmail(
+    await sendPasswordResetEmail(
       user.email,
       `${process.env.CLIENT_URL}/reset-password/${resetToken}`
     );
