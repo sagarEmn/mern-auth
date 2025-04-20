@@ -23,7 +23,7 @@ export const sendVerificationEmail = async (email, verificationToken) => {
   } catch (error) {
     console.error(`Error sending verification email`, error);
 
-    throw new Error(`Error sending verification email: ${email}`);
+    throw new Error(`Error sending verification email: ${error}`);
   }
 };
 
@@ -34,7 +34,7 @@ export const sendWelcomeEmail = async (email, name) => {
     const response = await mailtrapClient.send({
       from: sender,
       to: recipient,
-      template_uuid: "bee23565-367c-4bca-a0ac-403bb829fabf",
+      template_uuid: "549948b0-ec24-40e9-bb98-52e13388968b",
       template_variables: {
         company_info_name: "Auth Company",
         name: name,
