@@ -2,6 +2,7 @@ import jwt from "jsonwebtoken";
 
 export const verifyToken = (req, res, next) => {
   const token = req.cookies.token;
+  // client sends the req to server, server accesses req object that contains cookie
   // token string contains header, payload & signature of the cookie
   // header - metadeta about the token: typ (JWT), alg (SHA-256, HS256)
   // payload - object containing userId: value
