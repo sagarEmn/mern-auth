@@ -60,6 +60,29 @@ export const signup = async (req, res) => {
   }
 };
 
+export const checkAuth = async (req, res) => {
+  try {
+    const user = await User.findById(req.userId);
+    if (!user) {
+      res.status(401).json({
+        success: false,
+        message: "User not found",
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      user: {
+        ...user._doc,
+        password: undefined,
+      },
+    });
+  } catch (error) {
+    console.log("Error in checkAuth: ", error);
+    res.status(400).json({ success: false, message: error.message });
+  }
+};
+
 export const verifyEmail = async (req, res) => {
   const { code } = req.body;
 
