@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 
 export const verifyToken = (req, res, next) => {
-  const token = res.cookies.token;
+  const token = req.cookies.token;
   // token string contains header, payload & signature of the cookie
   // header - metadeta about the token: typ (JWT), alg (SHA-256, HS256)
   // payload - object containing userId: value
@@ -19,6 +19,7 @@ export const verifyToken = (req, res, next) => {
     // jwt.verify takes header, payload from received token
     // using process.env.JWT_SECRET variable, it re-calculates the signature
     // compares re-calculated signature with original signature from token
+    // holds the userId(payload) object
 
     if (!decoded) {
       res.status(401).json({
@@ -27,6 +28,9 @@ export const verifyToken = (req, res, next) => {
       });
     }
 
+    // req object is an HTTP request message sent by the client
+    // to make the userId available to other server-side functions, req.userId creates a new property directly on req object
+    // req.userId property is discarded and cleaned up by the JavaScript engine (garbage collection) after a res is sent by the server
     req.userId = decoded.userId;
     next();
   } catch (error) {
