@@ -1,4 +1,5 @@
 import React from "react";
+import { Loader, Lock, Mail, User } from "lucide-react";
 import { motion } from "framer-motion";
 
 export const SignupPage = () => {
@@ -15,12 +16,11 @@ export const SignupPage = () => {
     >
       <main className="p-8">
         <h2 className="text-3xl font-bold mb-6 text-center bg-gradient-to-r from-green-400 to-emerald-500 text-transparent bg-clip-text">
-          Signup Page
+          Create An Account
         </h2>
 
         <form onSubmit={handleSignup}>
-            
-
+          
         </form>
       </main>
     </motion.div>
