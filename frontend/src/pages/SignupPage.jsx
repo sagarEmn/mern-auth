@@ -8,6 +8,7 @@ import Input from "../components/Input";
 export const SignupPage = () => {
   // states for fields
   const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
 
   const handleSignup = (e) => {
     e.preventDefault();
@@ -30,9 +31,24 @@ export const SignupPage = () => {
         <form onSubmit={handleSignup}>
           <Input
             icon={User}
+            type="text"
             placeholder="Full Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
+          />
+          <Input 
+            icon={Mail}
+            type="email"
+            placeholder="Email Address"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <Input 
+            icon={Lock}
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </form>
       </main>
