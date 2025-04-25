@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { Loader, Lock, Mail, User } from "lucide-react";
 import { motion } from "framer-motion";
 
+// import components
+import Input from "../components/Input";
+
 export const SignupPage = () => {
+  // states for fields
+  const [name, setName] = useState("");
+
   const handleSignup = (e) => {
     e.preventDefault();
+
+    
   };
 
   return (
@@ -20,7 +28,12 @@ export const SignupPage = () => {
         </h2>
 
         <form onSubmit={handleSignup}>
-          
+          <Input
+            icon={User}
+            placeholder="Full Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
         </form>
       </main>
     </motion.div>
