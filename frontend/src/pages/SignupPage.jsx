@@ -9,6 +9,7 @@ export const SignupPage = () => {
   // states for fields
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleSignup = (e) => {
     e.preventDefault();
@@ -50,6 +51,8 @@ export const SignupPage = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
+
+
         </form>
       </main>
     </motion.div>
