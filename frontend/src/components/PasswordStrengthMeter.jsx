@@ -34,7 +34,26 @@ const PasswordCriteria = ({ password }) => {
 };
 
 const PasswordStrengthMeter = () => {
-  return <>PasswordStrengthMeter</>;
+  const getStrength = (pass) => {
+    let strength = 0;
+
+    if (pass.length >= 6) {
+      strength++;
+    }
+
+    if (pass.match(/[A-Z]/) && pass.match(/[a-z]/)) {
+      strength++;
+    }
+
+    if (pass.match(/\d/)) {
+      strength++;
+    }
+
+    if (pass.match(/[^a-zA-Z\d]/)) {
+      strength++;
+    }
+  };
+  const strength = getStrength(password);
 };
 
 export default PasswordStrengthMeter;
