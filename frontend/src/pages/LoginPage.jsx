@@ -1,9 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 
-export const LoginPage = () => {
-    return(
-        <>
-        Login Page
-        </>
-    )
-}
+const LoginPage = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSignup = (e) => {
+    e.preventDefault;
+  }
+
+  return (
+    <motion.section>
+      <header>Login</header>
+    </motion.section>
+  );
+};
+
+export default LoginPage;
