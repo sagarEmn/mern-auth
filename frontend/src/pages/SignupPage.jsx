@@ -5,6 +5,7 @@ import { Link } from "react-router";
 
 // import components
 import Input from "../components/Input";
+import PasswordStrengthMeter from "../components/PasswordStrengthMeter";
 
 export const SignupPage = () => {
   // states for fields
@@ -52,6 +53,9 @@ export const SignupPage = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
+
+          <PasswordStrengthMeter password={password} />
+
           <motion.button
             className="mt-5 w-full py-3 px-4 bg-gradient-to-r 
           from-green-500 to-emerald-600 

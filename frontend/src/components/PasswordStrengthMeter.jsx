@@ -1,7 +1,7 @@
 import React from "react";
 
 // lucide-react imports
-import { Check } from "lucide-react";
+import { Check, X } from "lucide-react";
 
 const PasswordCriteria = ({ password }) => {
   const criteria = [
@@ -11,7 +11,7 @@ const PasswordCriteria = ({ password }) => {
     { label: "Contains a number", met: /\d/.test(password) },
     {
       label: "Contains a special character",
-      met: /[A-Za-z0-9]/.test(password),
+      met: /[^A-Za-z0-9]/.test(password),
     },
   ];
 
@@ -33,10 +33,9 @@ const PasswordCriteria = ({ password }) => {
   );
 };
 
-const PasswordStrengthMeter = () => {
+const PasswordStrengthMeter = ({ password }) => {
   const getStrength = (pass) => {
     let strength = 0;
-
     if (pass.length >= 6) {
       strength++;
     }
@@ -52,6 +51,7 @@ const PasswordStrengthMeter = () => {
     if (pass.match(/[^a-zA-Z\d]/)) {
       strength++;
     }
+    return strength;
   };
 
   const strength = getStrength(password);
@@ -61,7 +61,7 @@ const PasswordStrengthMeter = () => {
     if (strength == 1) return "Weak";
     if (strength == 2) return "Fair";
     if (strength == 3) return "Good";
-    return Strong;
+    return "Strong";
   };
 
   const getColor = (strength) => {
@@ -74,7 +74,7 @@ const PasswordStrengthMeter = () => {
 
   return (
     <div className="mt-2">
-      <div className="flex justify-center items-center mb-1">
+      <div className="flex justify-between items-center mb-1">
         <span className="text-xs text-gray-400">Password Strength</span>
         <span className="text-xs text-gray-400">
           {getStrengthText(strength)}
@@ -84,9 +84,12 @@ const PasswordStrengthMeter = () => {
       <div className="flex space-x-1">
         {[...Array(4)].map((_, index) => (
           <div
+            key={index}
             className={`h-1 w-1/4 rounded-full transition-colors duration-300
             ${index < strength ? getColor(strength) : "bg-gray-600"}`}
-          ></div>
+          >
+            {" "}
+          </div>
         ))}
       </div>
 
