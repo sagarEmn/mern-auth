@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import Input from "../components/Input";
-import { Mail, Lock } from "lucide-react";
+import { Mail, Lock, Loader } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router";
 
 export const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const isLoading = true;
 
   const handleLogin = (e) => {
     e.preventDefault;
@@ -21,7 +22,7 @@ export const LoginPage = () => {
     >
       <div className="p-8">
         <header>
-        <h2 className="text-3xl font-bold mb-6 text-center bg-gradient-to-r from-green-400 to-emerald-500 text-transparent bg-clip-text">
+          <h2 className="text-3xl font-bold mb-6 text-center bg-gradient-to-r from-green-400 to-emerald-500 text-transparent bg-clip-text">
             Welcome Back
           </h2>
         </header>
@@ -62,8 +63,9 @@ export const LoginPage = () => {
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             type="submit"
+            disabled={isLoading}
           >
-            Login
+            { isLoading ? <Loader className="w-6 h-6 animate-spin mx-auto" /> : "Login"}
           </motion.button>
         </form>
       </div>
