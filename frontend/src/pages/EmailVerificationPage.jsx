@@ -16,12 +16,22 @@ const EmailVerificationPage = () => {
         newCode[i] = pastedCode[i] || "";
       }
       setCode(newCode);
-    }
-  }
 
-  return (
-    <div>EmailVerificationPage</div>
-  );
+      // Focus on the last non-empty input or the first emtpy one:
+      const lastFilledIndex = newCode.findLastIndex((digit) => digit !== "");
+      const focusIndex = lastFilledIndex < 5 ? lastFilledIndex + 1 : 5;
+      inputRefs.current[focusIndex].focus();
+    } else {
+      newCode[index] = value;
+      setCode(newCode);
+
+      if (value && index < 5) {
+        inputRefs.current[index + 1].focus();
+      }
+    }
+  };
+
+  return <div>EmailVerificationPage</div>;
 };
 
 export default EmailVerificationPage;
