@@ -37,6 +37,10 @@ const EmailVerificationPage = () => {
     }
   }
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+  }
+
   return <div>EmailVerificationPage</div>;
 };
 
