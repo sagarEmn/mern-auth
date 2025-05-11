@@ -3,6 +3,7 @@ import FloatingShapes from "./components/FloatingShapes";
 import { SignupPage } from "./pages/SignupPage";
 import { LoginPage } from "./pages/LoginPage";
 import { Routes, Route } from "react-router";
+import LoadingSpinner from "./components/LoadingSpinner";
 
 function App() {
   return (
