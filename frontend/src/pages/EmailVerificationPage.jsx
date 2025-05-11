@@ -62,6 +62,23 @@ const EmailVerificationPage = () => {
         <p className="text-center text-gray-300 mb-6">
           Enter the 6-digit code sent to your email address.
         </p>
+
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="flex justify-between">
+            {code.map((digit, index) => {
+              <input 
+                key={index}
+                ref={(el) => (inputRefs.current[index] = el)}
+                type="text"
+                maxLength="6"
+                value={digit}
+                onChange={(e) => handleChange(index, e.target.value)}
+                onKeyDown={(e) => handleKeyDown(index, e)}
+                className="w-12 h-12 text-center text-2xl font-bold bg-gray-700 text-white border-2 border-gray-600 rounded-lg focus:border-green-500 focus:outline-none"
+              />
+            })}
+          </div>
+        </form>
       </motion.div>
     </div>
   )
