@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import axios from "axiois";
+import axios from "axios";
 
 const API_URL =
   import.meta.env.MODE === "development"
