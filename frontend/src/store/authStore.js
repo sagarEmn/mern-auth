@@ -8,7 +8,14 @@ const API_URL =
 
 axios.defaults.withCredentials = true;
 
+// "create" function takes the arrow function which has the argument "set" and uses that function to update the store's states
+// store refers to a centralized place to hold and manage the application's state
+
+// "create" function returns all the initial states & the arrow functions (signup, login, etc.)
+
 export const useAuthStore = create((set) => ({
+
+  // define initial state of all the states in the store
   user: null,
   isAuthenticated: false,
   error: null,
