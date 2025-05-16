@@ -8,6 +8,8 @@ const ForgotPasswordPage = () => {
   const [email, setEmail] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
 
+  const { isLoading, forgotPassword } = useAuthStore();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
   };
