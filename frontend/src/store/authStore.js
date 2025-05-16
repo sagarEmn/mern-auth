@@ -13,6 +13,11 @@ axios.defaults.withCredentials = true;
 
 // "create" function returns all the initial states & the arrow functions (signup, login, etc.)
 
+// basically: Zustand hook "useAuthStore" is a hook that re-runs based on the changes 
+
+// how this works (overview): component that uses the hook (useAuthStore) and runs the functions accessed from (useAuthStore) to update the state 
+// and whenever "state" is updated, the said component re-renders
+
 export const useAuthStore = create((set) => ({
 
   // define initial state of all the states in the store
@@ -24,7 +29,10 @@ export const useAuthStore = create((set) => ({
   message: null,
 
   signup: async (email, password, name) => {
+    
+    // set function is used to change the states
     set({ isLoading: true, error: null });
+
     try {
       const response = await axios.post(`${API_URL}/signup`, {
         email,
