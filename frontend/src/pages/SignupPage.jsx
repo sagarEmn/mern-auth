@@ -1,7 +1,12 @@
+// react imports
 import React, { useState } from "react";
+import { Link, useNavigate } from "react-router";
+
 import { Loader, Lock, Mail, User } from "lucide-react";
 import { motion } from "framer-motion";
-import { Link } from "react-router";
+
+// import auth store
+import { useAuthStore } from "../store/authStore";
 
 // import components
 import Input from "../components/Input";
@@ -12,6 +17,8 @@ export const SignupPage = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const navigate = useNavigate();
 
   const handleSignup = (e) => {
     e.preventDefault();
