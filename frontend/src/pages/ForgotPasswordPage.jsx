@@ -38,7 +38,14 @@ const ForgotPasswordPage = () => {
               onChange={(e) => setEmail(e.target.value)}
               required
             />
-            <motion.button>Loader Component from authstore</motion.button>
+            <motion.button
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="w-full py-3 px-4 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold rounded-lg shadow-lg hover:from-green-600 hover:to-emerald-700 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-gray-900 transition duration-200"
+              type="submit"
+            >
+              Loader Component from authstore
+            </motion.button>
           </form>
         ) : (
           <div className="text-center">
@@ -59,9 +66,12 @@ const ForgotPasswordPage = () => {
       </div>
 
       <div className="px-8 py-4 bg-gray-900 bg-opacity-50 flex justify-center">
-        <Link to={"/login"} className="text-sm text-green-400 hover:underline flex items-center">
-            <ArrowLeft className="h-4 w-4 mr-2" /> 
-            Back to Login
+        <Link
+          to={"/login"}
+          className="text-sm text-green-400 hover:underline flex items-center"
+        >
+          <ArrowLeft className="h-4 w-4 mr-2" />
+          Back to Login
         </Link>
       </div>
     </motion.div>
