@@ -70,6 +70,11 @@ export const SignupPage = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
 
+          {/* returns the second operand, if first expression is true (render p element)
+              returns the first operand (empty), if first operand is false
+          */}
+          {error && <p className="text-red-500 font-semibold mt-2">{error}</p>}
+
           <PasswordStrengthMeter password={password} />
 
           <motion.button
