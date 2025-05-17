@@ -88,7 +88,11 @@ export const SignupPage = () => {
             whileTap={{ scale: 0.98 }}
             type="submit"
           >
-            Signup
+            {isLoading ? (
+              <Loader className="animate-spin mx-auto" size={24} />
+            ) : (
+              "Sign Up"
+            )}
           </motion.button>
         </form>
       </div>
