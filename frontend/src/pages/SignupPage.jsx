@@ -20,8 +20,17 @@ export const SignupPage = () => {
 
   const navigate = useNavigate();
 
-  const handleSignup = (e) => {
+  const { signup, error, isLoading } = useAuthStore();
+
+  const handleSignup = async (e) => {
     e.preventDefault();
+
+    try {
+      await signup(email, password, name);
+      navigate("/verify-email");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
