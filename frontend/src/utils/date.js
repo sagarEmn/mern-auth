@@ -1,5 +1,7 @@
 export const formatDate = (dateString) => {
   const date = new Date(dateString);
+
+  // date.getTime calculates the milliseconds value from unix epoch
   if (isNaN(date.getTime())) {
     return "Invalid Date";
   }
