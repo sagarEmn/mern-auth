@@ -1,9 +1,12 @@
 import React from "react";
+
+import { Routes, Route } from "react-router";
+
 import FloatingShapes from "./components/FloatingShapes";
+import LoadingSpinner from "./components/LoadingSpinner";
+
 import { SignupPage } from "./pages/SignupPage";
 import { LoginPage } from "./pages/LoginPage";
-import { Routes, Route } from "react-router";
-import LoadingSpinner from "./components/LoadingSpinner";
 
 function App() {
   return (
