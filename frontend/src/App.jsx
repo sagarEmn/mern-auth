@@ -7,6 +7,11 @@ import LoadingSpinner from "./components/LoadingSpinner";
 
 import { SignupPage } from "./pages/SignupPage";
 import { LoginPage } from "./pages/LoginPage";
+import EmailVerificationPage from "./pages/EmailVerificationPage";
+import ForgotPasswordPage from "./pages/ForgotPasswordPage";
+import ResetPasswordPage from "./pages/ResetPasswordPage";
+import DashboardPage from "./pages/DashboardPage";
+
 
 function App() {
   return (
