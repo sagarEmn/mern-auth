@@ -3,7 +3,6 @@ import React from "react";
 import { Routes, Route } from "react-router";
 
 import FloatingShapes from "./components/FloatingShapes";
-import LoadingSpinner from "./components/LoadingSpinner";
 
 import { SignupPage } from "./pages/SignupPage";
 import { LoginPage } from "./pages/LoginPage";
@@ -11,7 +10,6 @@ import EmailVerificationPage from "./pages/EmailVerificationPage";
 import ForgotPasswordPage from "./pages/ForgotPasswordPage";
 import ResetPasswordPage from "./pages/ResetPasswordPage";
 import DashboardPage from "./pages/DashboardPage";
-
 
 function App() {
   return (
@@ -39,10 +37,9 @@ function App() {
       />
 
       <Routes>
-        <Route path="/" element={"Home"} />
+        <Route path="/" element={<DashboardPage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/login" element={<LoginPage />} />
-        <LoadingSpinner />
       </Routes>
     </div>
   );
