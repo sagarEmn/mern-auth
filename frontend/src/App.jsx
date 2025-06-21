@@ -12,6 +12,20 @@ import ResetPasswordPage from "./pages/ResetPasswordPage";
 import DashboardPage from "./pages/DashboardPage";
 import { useAuthStore } from "./store/authStore";
 
+const ProtectedRoute = ({ children }) => {
+  const { isAuthenticated, user } = useAuthStore();
+
+  if (!isAuthenticated) {
+    return <Navigate to="/login" replace />;
+  }
+
+  if (!user.isVerified) {
+    return <Navigate to="/verify-email" replace />;
+  }
+
+  return children;
+};
+
 const RedirectAuthenticatedUser = ({ children }) => {
   const { isAuthenticated, user } = useAuthStore();
   if (isAuthenticated && user.isVerified) {
