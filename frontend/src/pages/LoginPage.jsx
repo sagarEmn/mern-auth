@@ -1,16 +1,29 @@
 import React, { useState } from "react";
-import Input from "../components/Input";
+import { Link, useNavigate } from "react-router";
+
+
 import { Mail, Lock, Loader } from "lucide-react";
+import Input from "../components/Input";
 import { motion } from "framer-motion";
-import { Link } from "react-router";
+import { useAuthStore } from "../store/authStore";
 
 export const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const isLoading = true;
 
-  const handleLogin = (e) => {
-    e.preventDefault;
+  const navigate = useNavigate();
+
+  const {login, isLoading, error } = useAuthStore();
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+
+    try {
+      await login(email, password);
+      navigate("/");
+    } catch (err) {
+      console.error("Login failed: ", err);
+    }
   };
 
   return (
@@ -31,6 +44,8 @@ export const LoginPage = () => {
           <Input
             icon={Mail}
             type="email"
+            id="email"
+            name="email"
             placeholder="Email Address"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -39,6 +54,8 @@ export const LoginPage = () => {
           <Input
             icon={Lock}
             type="password"
+            id="password"
+            // name="password"
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}

@@ -9,7 +9,7 @@ export const verifyToken = (req, res, next) => {
   // signature - fully visbile
 
   if (!token) {
-    res.status(401).json({
+    return res.status(401).json({
       success: false,
       message: "Unauthorized - no token provided",
     });
@@ -23,7 +23,7 @@ export const verifyToken = (req, res, next) => {
     // holds the userId(payload) object
 
     if (!decoded) {
-      res.status(401).json({
+      return res.status(401).json({
         success: false,
         message: "Unauthorized - invalid token",
       });
