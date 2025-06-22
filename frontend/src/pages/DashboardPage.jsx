@@ -55,7 +55,6 @@ const DashboardPage = () => {
           </p>
         </motion.div>
       </motion.div>{" "}
-      {/* Closing motion.div wrapper */}
     </motion.div>
   );
 };
