@@ -12,6 +12,7 @@ import ForgotPasswordPage from "./pages/ForgotPasswordPage";
 import ResetPasswordPage from "./pages/ResetPasswordPage";
 import DashboardPage from "./pages/DashboardPage";
 import { useAuthStore } from "./store/authStore";
+import Loader from "./components/Loader";
 
 const ProtectedRoute = ({ children }) => {
   const { isAuthenticated, user } = useAuthStore();
@@ -42,6 +43,10 @@ function App() {
   useEffect(() => {
     checkAuth();
   }, [checkAuth]);
+
+  if (isCheckingAuth) {
+    return <Loader />
+  }
 
   console.log("isAuthenticated: ", isAuthenticated);
   console.log("user:", user);
