@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router";
 
+import toast, { Toaster } from "react-hot-toast";
+
 import { Mail, Lock, Loader } from "lucide-react";
 import Input from "../components/Input";
 import { motion } from "framer-motion";
@@ -19,6 +21,7 @@ export const LoginPage = () => {
 
     try {
       await login(email, password);
+      toast.success("Login successful!");
       navigate("/");
     } catch (err) {
       console.error("Login failed: ", err);
