@@ -12,6 +12,8 @@ const DashboardPage = () => {
     ? formatDate(user.lastLogin)
     : "N/A";
 
+  const formattedCreatedAt = user.createdAt ? formatDate(user.createdAt) : "N/A";
+
   const handleLogout = () => {
     logout();
   };
@@ -49,6 +51,9 @@ const DashboardPage = () => {
           <p className="text-gray-300">
             <span className="font-bold">Verified Status:</span>{" "}
             {user.isVerified ? <span>Yes</span> : <span>No </span>}
+          </p>
+          <p className="text-gray-300">
+            <span className="font-bold">Account created at:</span> {formattedCreatedAt}{" "}
           </p>
           <p className="text-gray-300">
             <span className="font-bold">Last Login:</span> {formattedLastLogin}{" "}
