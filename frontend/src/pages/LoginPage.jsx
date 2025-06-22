@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router";
 
-
 import { Mail, Lock, Loader } from "lucide-react";
 import Input from "../components/Input";
 import { motion } from "framer-motion";
@@ -13,7 +12,7 @@ export const LoginPage = () => {
 
   const navigate = useNavigate();
 
-  const {login, isLoading, error } = useAuthStore();
+  const { login, isLoading, error } = useAuthStore();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -70,6 +69,8 @@ export const LoginPage = () => {
             </Link>
           </div>
 
+          {error && <p className="text-red-500 font-semibold mb-4">{error}</p>}
+
           <motion.button
             className="mt-5 w-full py-3 px-4 bg-gradient-to-r 
           from-green-500 to-emerald-600 
@@ -82,7 +83,11 @@ export const LoginPage = () => {
             type="submit"
             disabled={isLoading}
           >
-            { isLoading ? <Loader className="w-6 h-6 animate-spin mx-auto" /> : "Login"}
+            {isLoading ? (
+              <Loader className="w-6 h-6 animate-spin mx-auto" />
+            ) : (
+              "Login"
+            )}
           </motion.button>
         </form>
       </div>
