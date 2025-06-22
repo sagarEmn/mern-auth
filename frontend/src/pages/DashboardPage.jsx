@@ -12,7 +12,9 @@ const DashboardPage = () => {
     ? formatDate(user.lastLogin)
     : "N/A";
 
-  const formattedCreatedAt = user.createdAt ? formatDate(user.createdAt) : "N/A";
+  const formattedCreatedAt = user.createdAt
+    ? formatDate(user.createdAt)
+    : "N/A";
 
   const handleLogout = () => {
     logout();
@@ -53,13 +55,24 @@ const DashboardPage = () => {
             {user.isVerified ? <span>Yes</span> : <span>No </span>}
           </p>
           <p className="text-gray-300">
-            <span className="font-bold">Account created at:</span> {formattedCreatedAt}{" "}
+            <span className="font-bold">Account created at:</span>{" "}
+            {formattedCreatedAt}{" "}
           </p>
           <p className="text-gray-300">
             <span className="font-bold">Last Login:</span> {formattedLastLogin}{" "}
           </p>
         </motion.div>
       </motion.div>{" "}
+      <motion.button
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        onClick={handleLogout}
+        className="mt-4 w-full py-3 px-4 bg-gradient-to-r from-green-500 to-emerald-600 text-white 
+				font-bold rounded-lg shadow-lg hover:from-green-600 hover:to-emerald-700
+				 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-gray-900"
+      >
+        Logout
+      </motion.button>
     </motion.div>
   );
 };
